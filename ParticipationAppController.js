@@ -3,6 +3,26 @@ function doGet(e){
     return app;
 }
 
+function registSelected(e){
+    var app = UiApp.getActiveApplication();
+    var registRadio = app.getElementById('registForm');
+
+    registRadio.setText('登録するよ！');
+
+    app.close();
+    return app;
+}
+
+function deleteSelected(e){
+    var app = UiApp.getActiveApplication();
+    var deleteRadio = app.getElementById('deleteForm');
+
+    deleteRadio.setText('削除するよ！');
+
+    app.close();
+    return app;
+}
+
 function confirmInputData(e){
     var app = UiApp.getActiveApplication();
     var confirmDialog = createConfirmDialog(app);
