@@ -5,7 +5,7 @@ function doGet(e){
 
 function registSelected(e){
     var app = UiApp.getActiveApplication();
-    var registRadio = app.getElementById('registForm');
+    var registRadio = app.getElementById('registRadio');
 
     registRadio.setText('登録するよ！');
 
@@ -15,7 +15,7 @@ function registSelected(e){
 
 function deleteSelected(e){
     var app = UiApp.getActiveApplication();
-    var deleteRadio = app.getElementById('deleteForm');
+    var deleteRadio = app.getElementById('deleteRadio');
 
     deleteRadio.setText('削除するよ！');
 

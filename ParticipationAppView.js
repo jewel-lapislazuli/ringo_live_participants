@@ -24,8 +24,8 @@ function createFormPanel(app){
 
 function createFormTypePanel(app){
     var panel = app.createHorizontalPanel();
-    var registRadio = app.createRadioButton('formType', '登録する').setId('registForm');
-    var deleteRadio = app.createRadioButton('formType', '削除する').setId('deleteForm');
+    var registRadio = app.createRadioButton('formType', '登録する').setId('registRadio');
+    var deleteRadio = app.createRadioButton('formType', '削除する').setId('deleteRadio');
 
     var registSelected = app.createServerHandler('registSelected');
     var deleteSelected = app.createServerHandler('deleteSelected');
