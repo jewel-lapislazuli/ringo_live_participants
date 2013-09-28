@@ -136,3 +136,19 @@ function createConfirmPanel(app){
 
     return confirmPanel;
 }
+
+function getUserNameLabel(app){
+    return app.getElementById('userNameLabel');
+}
+
+function getUserNameTextBox(app){
+    return app.getElementById('userNameTextBox');
+}
+
+function getUserNameSampleLabel(app){
+    return app.getElementById('userNameSampleLabel');
+}
+
+function getConfirmDialog(app){
+    return app.getElementById('confirmDialog');
+}

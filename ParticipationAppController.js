@@ -6,9 +6,9 @@ function doGet(e){
 function registSelected(e){
     var app = UiApp.getActiveApplication();
 
-    var userNameLabel = app.getElementById('userNameLabel');
-    var userNameTextBox = app.getElementById('userNameTextBox');
-    var userNameSampleLabel = app.getElementById('userNameSampleLabel');
+    var userNameLabel = getUserNameLabel(app);
+    var userNameTextBox = getUserNameTextBox(app);
+    var userNameSampleLabel = getUserNameSampleLabel(app);
 
     userNameLabel.setVisible(true);
     userNameTextBox.setVisible(true);
@@ -21,9 +21,9 @@ function registSelected(e){
 function deleteSelected(e){
     var app = UiApp.getActiveApplication();
 
-    var userNameLabel = app.getElementById('userNameLabel');
-    var userNameTextBox = app.getElementById('userNameTextBox');
-    var userNameSampleLabel = app.getElementById('userNameSampleLabel');
+    var userNameLabel = getUserNameLabel(app);
+    var userNameTextBox = getUserNameTextBox(app);
+    var userNameSampleLabel = getUserNameSampleLabel(app);
 
     userNameLabel.setVisible(false);
     userNameTextBox.setVisible(false);
@@ -45,9 +45,9 @@ function confirmInputData(e){
 
 function submitData(e){
     var app = UiApp.getActiveApplication();
-    var dialog = app.getElementById('confirmDialog');
+    var confirmDialog = getConfirmDialog(app);
 
-    dialog.hide();
+    confirmDialog.hide();
 
     app.close();
     return app;
@@ -55,9 +55,9 @@ function submitData(e){
 
 function closeConfirmDialog(e){
     var app = UiApp.getActiveApplication();
-    var dialog = app.getElementById('confirmDialog');
+    var confirmDialog = getConfirmDialog(app);
 
-    dialog.hide();
+    confirmDialog.hide();
 
     app.close();
     return app;
