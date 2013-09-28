@@ -3,7 +3,7 @@ function doGet(e){
     return app;
 }
 
-function submitConfirm(e){
+function confirmInputData(e){
     var app = UiApp.getActiveApplication();
     var confirmDialog = createConfirmDialog(app);
 
