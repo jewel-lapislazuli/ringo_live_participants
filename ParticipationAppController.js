@@ -5,9 +5,14 @@ function doGet(e){
 
 function registSelected(e){
     var app = UiApp.getActiveApplication();
-    var registRadio = app.getElementById('registRadio');
 
-    registRadio.setText('登録するよ！');
+    var userNameLabel = app.getElementById('userNameLabel');
+    var userNameTextBox = app.getElementById('userNameTextBox');
+    var userNameSampleLabel = app.getElementById('userNameSampleLabel');
+
+    userNameLabel.setVisible(true);
+    userNameTextBox.setVisible(true);
+    userNameSampleLabel.setVisible(true);
 
     app.close();
     return app;
@@ -15,9 +20,14 @@ function registSelected(e){
 
 function deleteSelected(e){
     var app = UiApp.getActiveApplication();
-    var deleteRadio = app.getElementById('deleteRadio');
 
-    deleteRadio.setText('削除するよ！');
+    var userNameLabel = app.getElementById('userNameLabel');
+    var userNameTextBox = app.getElementById('userNameTextBox');
+    var userNameSampleLabel = app.getElementById('userNameSampleLabel');
+
+    userNameLabel.setVisible(false);
+    userNameTextBox.setVisible(false);
+    userNameSampleLabel.setVisible(false);
 
     app.close();
     return app;
