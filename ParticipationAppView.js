@@ -42,16 +42,28 @@ function createFormTypePanel(app){
 function createFormGrid(app){
     var grid = app.createGrid(3, 3);
 
-    grid.setWidget(0, 0, app.createLabel('参戦日'));
-    grid.setWidget(0, 1, createLiveDateListBox(app));
+    var participationDayLabel = app.createLabel('参戦日').setId('participationDayLabel');
+    var participationDayListBox = createLiveDateListBox(app).setName('participationDay').setId('participationDayListBox');
 
-    grid.setWidget(1, 0, app.createLabel('Twitterユーザ名    @'));
-    grid.setWidget(1, 1, app.createTextBox().setName('twitterUserName').setId('twitterUserName'));
-    grid.setWidget(1, 2, app.createLabel('例: @jwl_lapislazuli'));
+    var twitterUserNameLabel = app.createLabel('Twitterユーザ名').setId('twitterUserNameLabel');
+    var twitterUserNameTextBox = app.createTextBox().setName('twitterUserName').setId('twitterUserNameTextBox');
+    var twitterUserNameSampleLabel = app.createLabel('例: @jwl_lapislazuli').setId('twitterUserNameSampleLabel');
+    twitterUserNameTextBox.setText('@');
 
-    grid.setWidget(2, 0, app.createLabel('名前'));
-    grid.setWidget(2, 1, app.createTextBox().setName('userName').setId('userName'));
-    grid.setWidget(2, 2, app.createLabel('例: ラピスラズリ'));
+    var userNameLabel = app.createLabel('名前').setId('userNameLabel');
+    var userNameTextBox = app.createTextBox().setName('userName').setId('userNameTextBox');
+    var userNameSampleLabel = app.createLabel('例: ラピスラズリ').setId('userNameSampleLabel');
+
+    grid.setWidget(0, 0, participationDayLabel);
+    grid.setWidget(0, 1, participationDayListBox);
+
+    grid.setWidget(1, 0, twitterUserNameLabel);
+    grid.setWidget(1, 1, twitterUserNameTextBox);
+    grid.setWidget(1, 2, twitterUserNameSampleLabel);
+
+    grid.setWidget(2, 0, userNameLabel);
+    grid.setWidget(2, 1, userNameTextBox);
+    grid.setWidget(2, 2, userNameSampleLabel);
 
     return grid;
 }
