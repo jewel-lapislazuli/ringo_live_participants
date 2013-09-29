@@ -84,7 +84,9 @@ function createLiveDateListBox(app){
 function createSubmitButton(app){
     var submitButton = app.createButton('送信');
     var submitHandler = app.createServerHandler('confirmInputData');
+    var callbackWidget = getFormGrid(app);
 
+    submitHandler.addCallbackElement(callbackWidget);
     submitButton.addClickHandler(submitHandler);
 
     return submitButton;
