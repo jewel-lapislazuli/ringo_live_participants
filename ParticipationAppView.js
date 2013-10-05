@@ -73,7 +73,7 @@ function createLiveDateListBox(app){
 
     listBox.setVisibleItemCount(1);
 
-    listBox.addItem('', -1);
+    listBox.addItem('', DATEINDEX_DEFAULT_VALUE);
     for(var key in LIVE_DATEINFO){
         listBox.addItem(key, LIVE_DATEINFO[key]);
     }

@@ -4,6 +4,10 @@ var USERDATA_SHEETNAME = 'ユーザ情報';
 
 var LIVE_DATEINFO = {'11/18': 0, '11/19': 1, '11/20': 2, '11/25': 3, '11/26': 4, '11/28': 5, '11/29': 6};
 
+var DATEINDEX_DEFAULT_VALUE = -1
+var MAX_TWITTERNAME_LENGTH = 15;
+var MAX_USERNAME_LENGTH = 20;
+
 var ERROR_TOO_MANY_USERS = -1;
 var ERROR_TOO_MANY_PARTICIPANTS = -2;
 var ERROR_USER_NOT_FOUND = -3;
@@ -21,6 +25,24 @@ function ParticipationInfo_(twitterUserName, userName, dateIndex){
     this.twitterUserName = twitterUserName;
     this.userName = userName;
     this.dateIndex = dateIndex;
+}
+
+function FormInputData(twitterUserName, userName, dateIndex){
+    this.twitterUserName = twitterUserName;
+    this.userName = userName;
+    this.dateIndex = dateIndex;
+
+    this.validateData = function(){
+        if(this.dateIndex == DATEINDEX_DEFAULT_VALUE){
+            return ERROR_DATE_NOT_SPECIFIED;
+        }
+        if(this.twitterUserName.length == 0){
+            return ERROR_TWITTERUSERNAME_NOT_SPECIFIED;
+        }
+        if(this.userName.length == 0){
+            return ERROR_USERNAME_NOT_SPECIFIED;
+        }
+    }
 }
 
 function ParticipationSheet_(spreadsheet){
