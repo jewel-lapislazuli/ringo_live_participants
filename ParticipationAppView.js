@@ -42,8 +42,8 @@ function createFormTypePanel(app){
 function createFormGrid(app){
     var grid = app.createGrid(3, 3).setId('formGrid');
 
-    var participationDayLabel = app.createLabel('参戦日').setId('participationDayLabel');
-    var participationDayListBox = createLiveDateListBox(app).setName('participationDay').setId('participationDayListBox');
+    var dateIndexLabel = app.createLabel('参戦日').setId('dateIndexLabel');
+    var dateIndexListBox = createLiveDateListBox(app).setName('dateIndex').setId('dateIndexListBox');
 
     var twitterUserNameLabel = app.createLabel('Twitterユーザ名').setId('twitterUserNameLabel');
     var twitterUserNameTextBox = app.createTextBox().setName('twitterUserName').setId('twitterUserNameTextBox');
@@ -54,8 +54,8 @@ function createFormGrid(app){
     var userNameTextBox = app.createTextBox().setName('userName').setId('userNameTextBox');
     var userNameSampleLabel = app.createLabel('例: ラピスラズリ').setId('userNameSampleLabel');
 
-    grid.setWidget(0, 0, participationDayLabel);
-    grid.setWidget(0, 1, participationDayListBox);
+    grid.setWidget(0, 0, dateIndexLabel);
+    grid.setWidget(0, 1, dateIndexListBox);
 
     grid.setWidget(1, 0, twitterUserNameLabel);
     grid.setWidget(1, 1, twitterUserNameTextBox);
