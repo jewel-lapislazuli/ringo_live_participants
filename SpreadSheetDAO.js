@@ -11,14 +11,14 @@ var ERROR_PARTICIPATIONDATA_NOT_FOUND = -4;
 var ERROR_PARTICIPATIONDATA_ALREADY_REGISTERD = -5;
 var ERROR_USERDATA_ALREADY_REGISTERED = -6;
 var ERROR_ILLEGAL_DATE = -10;
-var ERROR_ILLEGAL_USERID = -11;
+var ERROR_ILLEGAL_TWITTERUSERNAME = -11;
 var ERROR_ILLEGAL_USERNAME = -12;
 var ERROR_DATE_NOT_SPECIFIED = -13;
-var ERROR_USERID_NOT_SPECIFIED = -14;
+var ERROR_TWITTERUSERNAME_NOT_SPECIFIED = -14;
 var ERROR_USERNAME_NOT_SPECIFIED = -15;
 
-function ParticipationInfo_(userId, userName, dateIndex){
-    this.userId = userId;
+function ParticipationInfo_(twitterUserName, userName, dateIndex){
+    this.twitterUserName = twitterUserName;
     this.userName = userName;
     this.dateIndex = dateIndex;
 }
@@ -37,12 +37,12 @@ function ParticipationSheet_(spreadsheet){
         var updateData = false;
 
         for(var i = 0; i < this.rowLength; i++){
-            if(this.values[i][columnIndex] == pInfo.userId){
+            if(this.values[i][columnIndex] == pInfo.twitterUserName){
                 return ERROR_PARTICIPATIONDATA_ALREADY_REGISTERD;
             }
 
             if(this.values[i][columnIndex] == '' || this.values[i][columnIndex] == undefined){
-                this.values[i][columnIndex] = pInfo.userId;
+                this.values[i][columnIndex] = pInfo.twitterUserName;
                 updateData = true;
                 break;
             }
@@ -61,7 +61,7 @@ function ParticipationSheet_(spreadsheet){
         var deleteData = false;
 
         for(var i = 0; i < this.rowLength; i++){
-            if(this.values[i][columnIndex] == pInfo.userId){
+            if(this.values[i][columnIndex] == pInfo.twitterUserName){
                 this.values[i][columnIndex] = '';
                 deleteData = true;
                 break;
@@ -88,12 +88,12 @@ function UserDataSheet_(spreadsheet){
 
     this.registUserdata = function(pInfo){
         for(var i = 0; i < this.rowLength; i++){
-            if(this.values[i][0] == pInfo.userId){
+            if(this.values[i][0] == pInfo.twitterUserName){
                 return ERROR_USERDATA_ALREADY_REGISTERED;
             }
 
             if(this.values[i][0] == '' || this.values[i][0] == undefined){
-                this.values[i][0] = pInfo.userId;
+                this.values[i][0] = pInfo.twitterUserName;
                 this.values[i][1] = pInfo.userName;
                 insertData = true;
                 break;
