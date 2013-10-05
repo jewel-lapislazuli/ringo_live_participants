@@ -38,7 +38,7 @@ function confirmInputData(e){
     var confirmDialog = createConfirmDialog(app);
     var formInputData = new FormInputData(e.parameter.twitterUserName, e.parameter.userName, e.parameter.participationDay);
 
-    var result = formInputData.validateData();
+    var result = formInputData.validateDataOnRegist();
 
     confirmDialog.show();
 

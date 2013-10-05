@@ -32,15 +32,22 @@ function FormInputData(twitterUserName, userName, dateIndex){
     this.userName = userName;
     this.dateIndex = dateIndex;
 
-    this.validateData = function(){
+    this.validateDataOnRegist = function(){
+        var result = this.validateDataOnDelete();
+        if(result != 0){
+            return result;
+        }
+        if(this.userName.length == 0){
+            return ERROR_USERNAME_NOT_SPECIFIED;
+        }
+    }
+
+    this.validateDataOnDelete = function(){
         if(this.dateIndex == DATEINDEX_DEFAULT_VALUE){
             return ERROR_DATE_NOT_SPECIFIED;
         }
         if(this.twitterUserName.length == 0){
             return ERROR_TWITTERUSERNAME_NOT_SPECIFIED;
-        }
-        if(this.userName.length == 0){
-            return ERROR_USERNAME_NOT_SPECIFIED;
         }
     }
 }
