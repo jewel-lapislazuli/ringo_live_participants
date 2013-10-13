@@ -36,7 +36,7 @@ function deleteSelected(e){
 function confirmInputData(e){
     var app = UiApp.getActiveApplication();
     var confirmDialog = createConfirmDialog(app);
-    var formInputData = new FormInputData(e.parameter.twitterUserName, e.parameter.userName, e.parameter.participationDay);
+    var formInputData = new FormInputData(e.parameter.twitterUserName, e.parameter.userName, e.parameter.dateIndex);
 
     var result = formInputData.validateDataOnRegist();
 
