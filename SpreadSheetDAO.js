@@ -33,22 +33,70 @@ function FormInputData(twitterUserName, userName, dateIndex){
     this.dateIndex = dateIndex;
 
     this.validateDataOnRegist = function(){
-        var result = this.validateDataOnDelete();
+        var result = 0;
+
+        result = this.validateDateIndex();
         if(result != 0){
             return result;
         }
-        if(this.userName.length == 0){
-            return ERROR_USERNAME_NOT_SPECIFIED;
+
+        result = this.validateTwitterUserName();
+        if(result != 0){
+            return result;
         }
+
+        result = this.validateUserName();
+        if(result != 0){
+            return result;
+        }
+
+        return 0;
     }
 
     this.validateDataOnDelete = function(){
+        var result = 0;
+
+        result = this.validateDateIndex();
+        if(result != 0){
+            return result;
+        }
+
+        result = this.validateTwitterUserName();
+        if(result != 0){
+            return result;
+        }
+
+        return 0;
+    }
+
+    this.validateDateIndex = function(){
         if(this.dateIndex == DATEINDEX_DEFAULT_VALUE){
             return ERROR_DATE_NOT_SPECIFIED;
         }
+
+        return 0;
+    }
+
+    this.validateTwitterUserName = function(){
         if(this.twitterUserName.length == 0){
             return ERROR_TWITTERUSERNAME_NOT_SPECIFIED;
         }
+        if(this.twitterUserName.length > MAX_TWITTERNAME_LENGTH){
+            return ERROR_ILLEGAL_TWITTERUSERNAME;
+        }
+
+        return 0;
+    }
+
+    this.validateUserName = function(){
+        if(this.userName.length == 0){
+            return ERROR_USERNAME_NOT_SPECIFIED;
+        }
+        if(this.userName.length > MAX_USERNAME_LENGTH){
+            return ERROR_ILLEGAL_USERNAME;
+        }
+
+        return 0;
     }
 }
 
