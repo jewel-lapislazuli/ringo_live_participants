@@ -15,8 +15,8 @@ var ERROR_PARTICIPATIONDATA_NOT_FOUND = -4;
 var ERROR_PARTICIPATIONDATA_ALREADY_REGISTERD = -5;
 var ERROR_USERDATA_ALREADY_REGISTERED = -6;
 var ERROR_ILLEGAL_DATE = -10;
-var ERROR_ILLEGAL_TWITTERUSERNAME = -11;
-var ERROR_ILLEGAL_USERNAME = -12;
+var ERROR_TOO_LONG_TWITTERUSERNAME = -11;
+var ERROR_TOO_LONG_USERNAME = -12;
 var ERROR_DATE_NOT_SPECIFIED = -13;
 var ERROR_TWITTERUSERNAME_NOT_SPECIFIED = -14;
 var ERROR_USERNAME_NOT_SPECIFIED = -15;
@@ -82,7 +82,7 @@ function FormInputData(twitterUserName, userName, dateIndex){
             return ERROR_TWITTERUSERNAME_NOT_SPECIFIED;
         }
         if(this.twitterUserName.length > MAX_TWITTERNAME_LENGTH){
-            return ERROR_ILLEGAL_TWITTERUSERNAME;
+            return ERROR_TOO_LONG_TWITTERUSERNAME;
         }
 
         return 0;
@@ -93,7 +93,7 @@ function FormInputData(twitterUserName, userName, dateIndex){
             return ERROR_USERNAME_NOT_SPECIFIED;
         }
         if(this.userName.length > MAX_USERNAME_LENGTH){
-            return ERROR_ILLEGAL_USERNAME;
+            return ERROR_TOO_LONG_USERNAME;
         }
 
         return 0;
