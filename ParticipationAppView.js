@@ -2,8 +2,10 @@ function buildUiApp(){
     var app = UiApp.createApplication();
 
     var formPanel = createFormPanel(app);
+    var submitButton = createSubmitButton(app);
 
     app.add(formPanel);
+    app.add(submitButton);
 
     return app;
 }
@@ -12,12 +14,10 @@ function createFormPanel(app){
     var formPanel = app.createVerticalPanel();
     var formTypePanel = createFormTypePanel(app);
     var formGrid = createFormGrid(app);
-    var submitButton = createSubmitButton(app);
 
     formPanel.setSpacing(10);
     formPanel.add(formTypePanel);
     formPanel.add(formGrid);
-    formPanel.add(submitButton);
 
     return formPanel;
 }
