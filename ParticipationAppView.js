@@ -11,7 +11,7 @@ function buildUiApp(){
 }
 
 function createFormPanel(app){
-    var formPanel = app.createVerticalPanel();
+    var formPanel = app.createVerticalPanel().setId('formPanel');
     var formTypePanel = createFormTypePanel(app);
     var formGrid = createFormGrid(app);
 
@@ -24,8 +24,8 @@ function createFormPanel(app){
 
 function createFormTypePanel(app){
     var panel = app.createHorizontalPanel();
-    var registRadio = app.createRadioButton('formType', '登録する').setId('registRadio').setValue(true);
-    var deleteRadio = app.createRadioButton('formType', '削除する').setId('deleteRadio');
+    var registRadio = app.createRadioButton('formType', '登録する').setName('formType').setId('registRadio').setValue(true);
+    var deleteRadio = app.createRadioButton('formType', '削除する').setName('formType').setId('deleteRadio');
 
     var registSelected = app.createServerHandler('registSelected');
     var deleteSelected = app.createServerHandler('deleteSelected');
@@ -84,7 +84,7 @@ function createLiveDateListBox(app){
 function createSubmitButton(app){
     var submitButton = app.createButton('送信');
     var submitHandler = app.createServerHandler('confirmInputData');
-    var callbackWidget = getFormGrid(app);
+    var callbackWidget = getFormPanel(app);
 
     submitHandler.addCallbackElement(callbackWidget);
     submitButton.addClickHandler(submitHandler);
@@ -153,6 +153,10 @@ function getUserNameSampleLabel(app){
 
 function getConfirmDialog(app){
     return app.getElementById('confirmDialog');
+}
+
+function getFormPanel(app){
+    return app.getElementById('formPanel');
 }
 
 function getFormGrid(app){
