@@ -37,8 +37,16 @@ function confirmInputData(e){
     var app = UiApp.getActiveApplication();
     var confirmDialog = createConfirmDialog(app);
     var formInputData = new FormInputData(e.parameter.twitterUserName, e.parameter.userName, e.parameter.dateIndex);
+    var result = 0;
+    var type = 0;
 
-    var result = formInputData.validateDataOnRegist();
+    if(e.parameter.formType == "false"){
+        type = TYPE_REGIST;
+        result = formInputData.validateDataOnRegist();
+    } else {
+        type = TYPE_DELETE;
+        result = formInputData.validateDataOnDelete();
+    }
 
     confirmDialog.show();
 
