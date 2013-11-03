@@ -35,7 +35,6 @@ function deleteSelected(e){
 
 function confirmInputData(e){
     var app = UiApp.getActiveApplication();
-    var confirmDialog = createConfirmDialog(app);
     var formInputData = new FormInputData(e.parameter.twitterUserName, e.parameter.userName, e.parameter.dateIndex);
     var result = 0;
     var type = 0;
@@ -48,10 +47,30 @@ function confirmInputData(e){
         result = formInputData.validateDataOnDelete();
     }
 
-    confirmDialog.show();
+    if(result != 0){
+        showErrorMessageDialog(app, result);
+    } else {
+        confirmSubmitData(app, formInputData, type);
+    }
 
     app.close();
     return app;
+}
+
+function confirmSubmitData(app, formInputData, type){
+    var confirmDialog = createConfirmDialog(app);
+
+    confirmDialog.show();
+
+    return 0;
+}
+
+function showErrorMessageDialog(app, errorCode){
+    var errorMessageDialog = createErrorMessageDialog(app, getErrorMessage(errorCode));
+
+    errorMessageDialog.show();
+
+    return 0;
 }
 
 function submitData(e){
@@ -69,6 +88,16 @@ function closeConfirmDialog(e){
     var confirmDialog = getConfirmDialog(app);
 
     confirmDialog.hide();
+
+    app.close();
+    return app;
+}
+
+function closeErrorMessageDialog(e){
+    var app = UiApp.getActiveApplication();
+    var errorMessageDialog = getErrorMessageDialog(app);
+
+    errorMessageDialog.hide();
 
     app.close();
     return app;

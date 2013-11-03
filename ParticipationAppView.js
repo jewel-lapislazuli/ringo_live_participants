@@ -103,6 +103,17 @@ function createConfirmDialog(app){
     return confirmDialog;
 }
 
+function createErrorMessageDialog(app, message){
+    var errorMessageDialog = app.createDialogBox(false, true).setTitle('エラー');
+    var errorMessagePanel = createErrorMessagePanel(app, message);
+
+    errorMessageDialog.setPopupPosition(400, 50);
+    errorMessageDialog.add(errorMessagePanel);
+    errorMessageDialog.setId('errorMessageDialog');
+
+    return errorMessageDialog;
+}
+
 function createConfirmButtonPanel(app){
     var buttonPanel = app.createHorizontalPanel();
 
@@ -139,6 +150,21 @@ function createConfirmPanel(app){
     return confirmPanel;
 }
 
+function createErrorMessagePanel(app, message){
+    var errorMessagePanel = app.createVerticalPanel();
+
+    var label = app.createLabel(message);
+    var closeButton = app.createButton('閉じる').setId('closeButton');
+
+    var closeButtonHandler = app.createServerHandler('closeErrorMessageDialog');
+    closeButton.addClickHandler(closeButtonHandler);
+
+    errorMessagePanel.add(label);
+    errorMessagePanel.add(closeButton);
+
+    return errorMessagePanel
+}
+
 function getUserNameLabel(app){
     return app.getElementById('userNameLabel');
 }
@@ -161,4 +187,8 @@ function getFormPanel(app){
 
 function getFormGrid(app){
     return app.getElementById('formGrid');
+}
+
+function getErrorMessageDialog(app){
+    return app.getElementById('errorMessageDialog');
 }
