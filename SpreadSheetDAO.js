@@ -17,12 +17,48 @@ var ERROR_USER_NOT_FOUND = -3;
 var ERROR_PARTICIPATIONDATA_NOT_FOUND = -4;
 var ERROR_PARTICIPATIONDATA_ALREADY_REGISTERD = -5;
 var ERROR_USERDATA_ALREADY_REGISTERED = -6;
-var ERROR_ILLEGAL_DATE = -10;
-var ERROR_TOO_LONG_TWITTERUSERNAME = -11;
-var ERROR_TOO_LONG_USERNAME = -12;
-var ERROR_DATE_NOT_SPECIFIED = -13;
-var ERROR_TWITTERUSERNAME_NOT_SPECIFIED = -14;
-var ERROR_USERNAME_NOT_SPECIFIED = -15;
+var ERROR_TOO_LONG_TWITTERUSERNAME = -10;
+var ERROR_TOO_LONG_USERNAME = -11;
+var ERROR_DATE_NOT_SPECIFIED = -12;
+var ERROR_TWITTERUSERNAME_NOT_SPECIFIED = -13;
+var ERROR_USERNAME_NOT_SPECIFIED = -14;
+
+function getErrorMessage(errorCode){
+    switch(errorCode){
+        case ERROR_TOO_MANY_USERS:
+        return '登録ユーザ数が一杯になりました。管理者( @jwl_lapislazuli )への連絡をお願いします。'
+
+        case ERROR_TOO_MANY_PARTICIPANTS:
+        return '1日あたりの参戦ユーザ数がいっぱいになりました。管理者( @jwl_lapislazuli )への連絡をお願いします。'
+
+        case ERROR_USER_NOT_FOUND:
+        return '指定のユーザは登録されていません。'
+
+        case ERROR_PARTICIPATIONDATA_NOT_FOUND:
+        return '指定の参戦情報は登録されていません。'
+
+        case ERROR_PARTICIPATIONDATA_ALREADY_REGISTERD:
+        return '指定の参戦情報は既に登録されています。'
+
+        case ERROR_TOO_LONG_TWITTERUSERNAME:
+        return 'Twitterユーザ名が長すぎます。'
+
+        case ERROR_TOO_LONG_USERNAME:
+        return 'ユーザ名が長すぎます。'
+
+        case ERROR_DATE_NOT_SPECIFIED:
+        return '参戦日を入力してください。'
+
+        case ERROR_TWITTERUSERNAME_NOT_SPECIFIED:
+        return 'Twitterユーザ名を入力してください。'
+
+        case ERROR_USERNAME_NOT_SPECIFIED:
+        return 'ユーザ名を入力してください。'
+
+        default:
+        return 'エラーが発生しました。'
+    }
+}
 
 function ParticipationInfo_(twitterUserName, userName, dateIndex){
     this.twitterUserName = twitterUserName;
