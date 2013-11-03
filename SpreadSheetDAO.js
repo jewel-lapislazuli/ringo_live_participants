@@ -31,7 +31,7 @@ function ParticipationInfo_(twitterUserName, userName, dateIndex){
 }
 
 function FormInputData(twitterUserName, userName, dateIndex){
-    this.twitterUserName = twitterUserName;
+    this.twitterUserName = twitterUserName.replace(/^@/,'');
     this.userName = userName;
     this.dateIndex = dateIndex;
 
