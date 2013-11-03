@@ -96,7 +96,7 @@ function createConfirmDialog(app){
     var confirmDialog = app.createDialogBox(false, true).setTitle('確認');
     var confirmPanel = createConfirmPanel(app);
 
-    confirmDialog.setPopupPosition(400, 50);
+    confirmDialog.setPopupPosition(50, 50);
     confirmDialog.add(confirmPanel);
     confirmDialog.setId('confirmDialog');
 
@@ -107,7 +107,7 @@ function createErrorMessageDialog(app, message){
     var errorMessageDialog = app.createDialogBox(false, true).setTitle('エラー');
     var errorMessagePanel = createErrorMessagePanel(app, message);
 
-    errorMessageDialog.setPopupPosition(400, 50);
+    errorMessageDialog.setPopupPosition(50, 50);
     errorMessageDialog.add(errorMessagePanel);
     errorMessageDialog.setId('errorMessageDialog');
 
