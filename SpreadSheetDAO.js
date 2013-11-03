@@ -61,8 +61,8 @@ function getErrorMessage(errorCode){
 }
 
 function ParticipationInfo_(twitterUserName, userName, dateIndex){
-    this.twitterUserName = twitterUserName;
-    this.userName = userName;
+    this.twitterUserName = twitterUserName.replace(/^=/,'\'=');
+    this.userName = userName.replace(/^=/,'\'=');
     this.dateIndex = dateIndex;
 }
 
