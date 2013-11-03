@@ -159,6 +159,7 @@ function createErrorMessagePanel(app, message){
     var closeButtonHandler = app.createServerHandler('closeErrorMessageDialog');
     closeButton.addClickHandler(closeButtonHandler);
 
+    errorMessagePanel.setHorizontalAlignment(UiApp.HorizontalAlignment.CENTER);
     errorMessagePanel.add(label);
     errorMessagePanel.add(closeButton);
 
