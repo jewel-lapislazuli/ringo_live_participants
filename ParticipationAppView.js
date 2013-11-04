@@ -92,9 +92,9 @@ function createSubmitButton(app){
     return submitButton;
 }
 
-function createConfirmDialog(app){
+function createConfirmDialog(app, type){
     var confirmDialog = app.createDialogBox(false, true).setTitle('確認');
-    var confirmPanel = createConfirmPanel(app);
+    var confirmPanel = createConfirmPanel(app, type);
 
     confirmDialog.setPopupPosition(50, 50);
     confirmDialog.add(confirmPanel);
@@ -114,11 +114,31 @@ function createErrorMessageDialog(app, message){
     return errorMessageDialog;
 }
 
-function createConfirmButtonPanel(app){
+function createConfirmPanel(app, type){
+    var confirmPanel = app.createVerticalPanel();
+
+    var label = app.createLabel();
+    var buttonPanel = createConfirmButtonPanel(app, type);
+
+    if(type == TYPE_REGIST){
+        label.setText('登録しますか？');
+    } else {
+        label.setText('削除しますか？');
+    }
+    label.setWidth('200px');
+    label.setHorizontalAlignment(UiApp.HorizontalAlignment.CENTER);
+
+    confirmPanel.add(label);
+    confirmPanel.add(buttonPanel);
+
+    return confirmPanel;
+}
+
+function createConfirmButtonPanel(app, type){
     var buttonPanel = app.createHorizontalPanel();
 
-    var okButton = app.createButton('はい').setId('confirmOK');
-    var cancelButton = app.createButton('いいえ').setId('confirmCancel');
+    var okButton = app.createButton('OK').setId('confirmOK');
+    var cancelButton = app.createButton('キャンセル').setId('confirmCancel');
 
     var confirmOkHandler = app.createServerHandler('submitData');
     var confirmCancelHandler = app.createServerHandler('closeConfirmDialog');
@@ -133,21 +153,6 @@ function createConfirmButtonPanel(app){
     buttonPanel.add(cancelButton);
 
     return buttonPanel;
-}
-
-function createConfirmPanel(app){
-    var confirmPanel = app.createVerticalPanel();
-
-    var label = app.createLabel('このデータでよいですか？');
-    var buttonPanel = createConfirmButtonPanel(app);
-
-    label.setWidth('200px');
-    label.setHorizontalAlignment(UiApp.HorizontalAlignment.CENTER);
-
-    confirmPanel.add(label);
-    confirmPanel.add(buttonPanel);
-
-    return confirmPanel;
 }
 
 function createErrorMessagePanel(app, message){

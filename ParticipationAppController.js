@@ -56,7 +56,7 @@ function confirmInputData(e){
 }
 
 function confirmSubmitData(app, formInputData, type){
-    var confirmDialog = createConfirmDialog(app);
+    var confirmDialog = createConfirmDialog(app, type);
 
     confirmDialog.show();
 
