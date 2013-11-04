@@ -166,6 +166,14 @@ function createErrorMessagePanel(app, message){
     return errorMessagePanel
 }
 
+function getFormType(formTypeRadioStatus){
+    if(formTypeRadioStatus == "false"){
+        return TYPE_REGIST;
+    } else {
+        return TYPE_DELETE;
+    }
+}
+
 function getUserNameLabel(app){
     return app.getElementById('userNameLabel');
 }
