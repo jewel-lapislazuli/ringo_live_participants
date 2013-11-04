@@ -140,7 +140,11 @@ function createConfirmButtonPanel(app, type){
     var okButton = app.createButton('OK').setId('confirmOK');
     var cancelButton = app.createButton('キャンセル').setId('confirmCancel');
 
-    var confirmOkHandler = app.createServerHandler('submitData');
+    if(type == TYPE_REGIST){
+        var confirmOkHandler = app.createServerHandler('registParticipationInfo');
+    } else {
+        var confirmOkHandler = app.createServerHandler('deleteParticipationInfo');
+    }
     var confirmCancelHandler = app.createServerHandler('closeConfirmDialog');
 
     buttonPanel.setWidth('200px');

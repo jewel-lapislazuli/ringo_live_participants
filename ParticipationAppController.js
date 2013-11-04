@@ -71,7 +71,17 @@ function showErrorMessageDialog(app, errorCode){
     return 0;
 }
 
-function submitData(e){
+function registParticipationInfo(e){
+    var app = UiApp.getActiveApplication();
+    var confirmDialog = getConfirmDialog(app);
+
+    confirmDialog.hide();
+
+    app.close();
+    return app;
+}
+
+function deleteParticipationInfo(e){
     var app = UiApp.getActiveApplication();
     var confirmDialog = getConfirmDialog(app);
 
