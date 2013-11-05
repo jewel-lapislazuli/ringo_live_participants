@@ -85,7 +85,7 @@ function registData(e){
     result = registParticipationInfo(pInfo);
 
     if(result == 0){
-        break;
+        showCompleteMessageDialog(app, TYPE_REGIST)
     } else {
         showErrorMessageDialog(app, result);
     }
@@ -107,7 +107,7 @@ function deleteData(e){
     result = deleteParticipationInfo(pInfo);
 
     if(result == 0){
-        break;
+        showCompleteMessageDialog(app, TYPE_DELETE);
     } else {
         showErrorMessageDialog(app, result);
     }
@@ -116,11 +116,29 @@ function deleteData(e){
     return app;
 }
 
+function showCompleteMessageDialog(app, type){
+    var completeMessageDialog = createCompleteMessageDialog(app, type);
+
+    completeMessageDialog.show();
+
+    return 0;
+}
+
 function closeConfirmDialog(e){
     var app = UiApp.getActiveApplication();
     var confirmDialog = getConfirmDialog(app);
 
     confirmDialog.hide();
+
+    app.close();
+    return app;
+}
+
+function closeCompleteMessageDialog(e){
+    var app = UiApp.getActiveApplication();
+    var completeMessageDialog = getCompleteMessageDialog(app);
+
+    completeMessageDialog.hide();
 
     app.close();
     return app;

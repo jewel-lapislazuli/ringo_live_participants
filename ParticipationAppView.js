@@ -103,6 +103,17 @@ function createConfirmDialog(app, type){
     return confirmDialog;
 }
 
+function createCompleteMessageDialog(app, type){
+    var completeMessageDialog = app.createDialogBox(false, true).setTitle('正常終了');
+    var completeMessagePanel = createCompleteMessagePanel(app, type);
+
+    completeMessageDialog.setPopupPosition(50, 50);
+    completeMessageDialog.add(completeMessagePanel);
+    completeMessageDialog.setId('completeMessageDialog');
+
+    return completeMessageDialog;
+}
+
 function createErrorMessageDialog(app, message){
     var errorMessageDialog = app.createDialogBox(false, true).setTitle('エラー');
     var errorMessagePanel = createErrorMessagePanel(app, message);
@@ -160,6 +171,27 @@ function createConfirmButtonPanel(app, type){
     return buttonPanel;
 }
 
+function createCompleteMessagePanel(app, type){
+    var completeMessagePanel = app.createVerticalPanel();
+
+    var label = app.createLabel();
+    var closeButton = app.createButton('閉じる').setId('closeCompleteMessageButton');
+
+    var closeCompleteMessageButtonHandler = app.createServerHandler('closeCompleteMessageDialog');
+    closeButton.addClickHandler(closeCompleteMessageButtonHandler);
+
+    if(type == TYPE_REGIST){
+        label.setText('登録が完了しました');
+    } else {
+        label.setText('削除が完了しました');
+    }
+    completeMessagePanel.setHorizontalAlignment(UiApp.HorizontalAlignment.CENTER);
+    completeMessagePanel.add(label);
+    completeMessagePanel.add(closeButton);
+
+    return completeMessagePanel
+}
+
 function createErrorMessagePanel(app, message){
     var errorMessagePanel = app.createVerticalPanel();
 
@@ -196,16 +228,20 @@ function getUserNameSampleLabel(app){
     return app.getElementById('userNameSampleLabel');
 }
 
-function getConfirmDialog(app){
-    return app.getElementById('confirmDialog');
-}
-
 function getFormPanel(app){
     return app.getElementById('formPanel');
 }
 
 function getFormGrid(app){
     return app.getElementById('formGrid');
+}
+
+function getConfirmDialog(app){
+    return app.getElementById('confirmDialog');
+}
+
+function getCompleteMessageDialog(app){
+    return app.getElementById('completeMessageDialog');
 }
 
 function getErrorMessageDialog(app){
