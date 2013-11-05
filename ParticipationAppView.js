@@ -150,6 +150,7 @@ function createConfirmButtonPanel(app, type){
     buttonPanel.setWidth('200px');
     buttonPanel.setHorizontalAlignment(UiApp.HorizontalAlignment.CENTER);
 
+    confirmOkHandler.addCallbackElement(getFormGrid(app));
     okButton.addClickHandler(confirmOkHandler);
     cancelButton.addClickHandler(confirmCancelHandler);
 
