@@ -60,6 +60,10 @@ function getErrorMessage(errorCode){
     }
 }
 
+function trimTwitterUserNamePrefix(twitterUserName){
+    return twitterUserName.replace(/^@/,'');
+}
+
 function ParticipationInfo_(twitterUserName, userName, dateIndex){
     this.twitterUserName = twitterUserName.replace(/^=/,'\'=');
     this.userName = userName.replace(/^=/,'\'=');
@@ -67,7 +71,7 @@ function ParticipationInfo_(twitterUserName, userName, dateIndex){
 }
 
 function FormInputData(twitterUserName, userName, dateIndex){
-    this.twitterUserName = twitterUserName.replace(/^@/,'');
+    this.twitterUserName = twitterUserName;
     this.userName = userName;
     this.dateIndex = dateIndex;
 

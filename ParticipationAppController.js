@@ -35,7 +35,8 @@ function deleteSelected(e){
 
 function confirmInputData(e){
     var app = UiApp.getActiveApplication();
-    var formInputData = new FormInputData(e.parameter.twitterUserName, e.parameter.userName, e.parameter.dateIndex);
+    var formInputData =
+    new FormInputData(trimTwitterUserNamePrefix(e.parameter.twitterUserName), e.parameter.userName, e.parameter.dateIndex);
     var result = 0;
     var type = getFormType(e.parameter.formType);
 
