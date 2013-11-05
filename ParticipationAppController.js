@@ -76,7 +76,13 @@ function registData(e){
     var app = UiApp.getActiveApplication();
     var confirmDialog = getConfirmDialog(app);
 
+    var param = e.parameter;
+    var pInfo = new ParticipationInfo_(trimTwitterUserNamePrefix(param.twitterUserName), param.userName, param.dateIndex);
+    var result = null;
+
     confirmDialog.hide();
+
+    result = registParticipationInfo(pInfo);
 
     app.close();
     return app;
@@ -86,7 +92,13 @@ function deleteData(e){
     var app = UiApp.getActiveApplication();
     var confirmDialog = getConfirmDialog(app);
 
+    var param = e.parameter;
+    var pInfo = new ParticipationInfo_(trimTwitterUserNamePrefix(param.twitterUserName), param.userName, param.dateIndex);
+    var result = null;
+
     confirmDialog.hide();
+
+    result = deleteParticipationInfo(pInfo);
 
     app.close();
     return app;
