@@ -16,7 +16,6 @@ var ERROR_TOO_MANY_PARTICIPANTS = -2;
 var ERROR_USER_NOT_FOUND = -3;
 var ERROR_PARTICIPATIONDATA_NOT_FOUND = -4;
 var ERROR_PARTICIPATIONDATA_ALREADY_REGISTERD = -5;
-var ERROR_USERDATA_ALREADY_REGISTERED = -6;
 var ERROR_TOO_LONG_TWITTERUSERNAME = -10;
 var ERROR_TOO_LONG_USERNAME = -11;
 var ERROR_DATE_NOT_SPECIFIED = -12;
@@ -209,7 +208,7 @@ function UserDataSheet_(spreadsheet){
     this.registUserdata = function(pInfo){
         for(var i = 0; i < this.rowLength; i++){
             if(this.values[i][0] == pInfo.twitterUserName){
-                return ERROR_USERDATA_ALREADY_REGISTERED;
+                return 0;
             }
 
             if(this.values[i][0] == '' || this.values[i][0] == undefined){
@@ -234,13 +233,31 @@ function registParticipationInfo(pInfo){
     var psheet = new ParticipationSheet_(spreadsheet);
     var usheet = new UserDataSheet_(spreadsheet);
 
-    var uresult = usheet.registUserdata(pInfo);
-    var presult = psheet.registParticipationInfo(pInfo);
+    var result = null;
+
+    result = usheet.registUserdata(pInfo);
+    if(result != 0){
+        return result;
+    }
+
+    result = psheet.registParticipationInfo(pInfo);
+    if(result != 0){
+        return result;
+    }
+
+    return 0;
 }
 
 function deleteParticipationInfo(pInfo){
     var spreadsheet = SpreadsheetApp.openById(SPREADSHEET_ID);
     var psheet = new ParticipationSheet_(spreadsheet);
 
-    var presult = psheet.deleteParticipationInfo(pInfo);
+    var result = null;
+
+    result = psheet.deleteParticipationInfo(pInfo);
+    if(result != 0){
+        return result;
+    }
+
+    return 0;
 }
