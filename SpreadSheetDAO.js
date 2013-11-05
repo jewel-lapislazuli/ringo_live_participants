@@ -13,9 +13,8 @@ var TYPE_DELETE = 2;
 
 var ERROR_TOO_MANY_USERS = -1;
 var ERROR_TOO_MANY_PARTICIPANTS = -2;
-var ERROR_USER_NOT_FOUND = -3;
-var ERROR_PARTICIPATIONDATA_NOT_FOUND = -4;
-var ERROR_PARTICIPATIONDATA_ALREADY_REGISTERD = -5;
+var ERROR_PARTICIPATIONDATA_NOT_FOUND = -3;
+var ERROR_PARTICIPATIONDATA_ALREADY_REGISTERD = -4;
 var ERROR_TOO_LONG_TWITTERUSERNAME = -10;
 var ERROR_TOO_LONG_USERNAME = -11;
 var ERROR_DATE_NOT_SPECIFIED = -12;
@@ -25,19 +24,16 @@ var ERROR_USERNAME_NOT_SPECIFIED = -14;
 function getErrorMessage(errorCode){
     switch(errorCode){
         case ERROR_TOO_MANY_USERS:
-        return '登録ユーザ数が一杯になりました。管理者( @jwl_lapislazuli )への連絡をお願いします。'
+        return '登録ユーザ数がいっぱいになりました。管理者( @jwl_lapislazuli )への連絡をお願いします。'
 
         case ERROR_TOO_MANY_PARTICIPANTS:
         return '1日あたりの参戦ユーザ数がいっぱいになりました。管理者( @jwl_lapislazuli )への連絡をお願いします。'
 
-        case ERROR_USER_NOT_FOUND:
-        return '指定のユーザは登録されていません。'
-
         case ERROR_PARTICIPATIONDATA_NOT_FOUND:
-        return '指定の参戦情報は登録されていません。'
+        return '入力した参戦情報は登録されていません。'
 
         case ERROR_PARTICIPATIONDATA_ALREADY_REGISTERD:
-        return '指定の参戦情報は既に登録されています。'
+        return '入力した参戦情報は既に登録されています。'
 
         case ERROR_TOO_LONG_TWITTERUSERNAME:
         return 'Twitterユーザ名が長すぎます。'
@@ -188,7 +184,7 @@ function ParticipationSheet_(spreadsheet){
         }
 
         if(deleteData == false){
-            return PARTICIPANTDATA_NOT_FOUND;
+            return ERROR_PARTICIPATIONDATA_NOT_FOUND;
         }
 
         this.range.setValues(this.values);

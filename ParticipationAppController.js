@@ -84,6 +84,12 @@ function registData(e){
 
     result = registParticipationInfo(pInfo);
 
+    if(result == 0){
+        break;
+    } else {
+        showErrorMessageDialog(app, result);
+    }
+
     app.close();
     return app;
 }
@@ -99,6 +105,12 @@ function deleteData(e){
     confirmDialog.hide();
 
     result = deleteParticipationInfo(pInfo);
+
+    if(result == 0){
+        break;
+    } else {
+        showErrorMessageDialog(app, result);
+    }
 
     app.close();
     return app;
