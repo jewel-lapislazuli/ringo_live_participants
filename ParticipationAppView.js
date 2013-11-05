@@ -141,9 +141,9 @@ function createConfirmButtonPanel(app, type){
     var cancelButton = app.createButton('キャンセル').setId('confirmCancel');
 
     if(type == TYPE_REGIST){
-        var confirmOkHandler = app.createServerHandler('registParticipationInfo');
+        var confirmOkHandler = app.createServerHandler('registData');
     } else {
-        var confirmOkHandler = app.createServerHandler('deleteParticipationInfo');
+        var confirmOkHandler = app.createServerHandler('deleteData');
     }
     var confirmCancelHandler = app.createServerHandler('closeConfirmDialog');
 
